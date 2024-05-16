@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Rabka Anime List
 
-## Getting Started
+This project is a web application built using Next.js. It allows users to view and manage their anime list.
 
-First, run the development server:
+| Before Login                                                          | After Login                                                       | Detail Movie                                              |
+| --------------------------------------------------------------------- | ----------------------------------------------------------------- | --------------------------------------------------------- |
+| ![Landing Page Before Login](./assets/readme/landingPageNotLogin.png) | ![Landing Page After Login](./assets/readme/landingPageLoged.png) | ![Detail Movie Page](./assets/readme/detailMoviePage.png) |
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+| Profile                                          | My Collection                                               | My Comment                                            |
+| ------------------------------------------------ | ----------------------------------------------------------- | ----------------------------------------------------- |
+| ![Profile Page](./assets/readme/profilePage.png) | ![My Collection Page](./assets/readme/myCollectionPage.png) | ![My Comment Page](./assets/readme/myCommectPage.png) |
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Loading State                                 | Login GitHub                               | Logout GitHub                                |
+| --------------------------------------------- | ------------------------------------------ | -------------------------------------------- |
+| ![Loading State](./assets/readme/loading.png) | ![Login GitHub](./assets/readme/login.png) | ![Logout GitHub](./assets/readme/logout.png) |
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Requirements
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Node.js
+- NPM or Yarn
+- Supabase account
 
-## Learn More
+## Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone this repository to your local machine:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   git clone https://github.com/akbarekaputra01/rabkaanimelist.git
+   cd rabkaanimelist
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2. Install dependencies:
 
-## Deploy on Vercel
+   ```bash
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Create a `.env` file from the `.env.example` template:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   ```bash
+   cp .env.example .env
+   ```
+
+4. Update the contents of the `.env` file with your own information:
+
+   - **GITHUB_CLIENT_ID** and **GITHUB_CLIENT_SECRET**:
+
+     - Go to [GitHub Developer Settings](https://github.com/settings/developers).
+     - Click **New OAuth App**.
+     - Set the **Homepage URL** to `http://localhost:3000/` or your landing page URL.
+     - Set the **Authorization callback URL** to `http://localhost:3000/api/auth/callback`.
+     - Register the application, then copy the **Client ID** and **Client Secret** into your `.env` file.
+
+   - **DATABASE_URL**:
+     - Log in to [Supabase](https://supabase.io/).
+     - Create a new project and copy your database password.
+     - Once the project is set up, click the **Connect** button and copy your connection URL.
+     - Paste the URL into your `.env` file and add the password you copied.
+
+5. Run Prisma migrations to set up the database schema:
+
+   ```bash
+   npx prisma migrate dev
+   ```
+
+6. To run the project locally:
+
+   ```bash
+   npm run dev
+   ```
+
+## Contributing
+
+If you would like to contribute to this project, please fork the repository and create a pull request with your changes.
